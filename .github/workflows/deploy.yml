@@ -14,7 +14,9 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            export NVM_DIR="/home/ubuntu/.nvm"
+            export PATH="$NVM_DIR/versions/node/v24.18.0/bin:$PATH"
             cd ~/app/aws-devops-assignment
             git pull origin main
-            /home/ubuntu/.nvm/versions/node/v24.18.0/bin/npm install
-            /home/ubuntu/.nvm/versions/node/v24.18.0/bin/pm2 restart myapp
+            npm install
+            pm2 restart myapp
