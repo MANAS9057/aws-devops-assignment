@@ -14,7 +14,8 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd ~/app
-            git pull origin main
+            export PATH="/home/ubuntu/.nvm/versions/node/v24.18.0/bin:$PATH"
+            cd /home/ubuntu/app/aws-devops-assignment
+            git pull
             npm install
             pm2 restart myapp
